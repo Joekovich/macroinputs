@@ -1,0 +1,63 @@
+.textbox {
+    position: static;
+}
+
+.textbox input {
+    width: 260px;
+    height: 64px;
+    border-radius: 6px;
+    background: transparent;
+    border: 3px solid #df2666;
+    padding: 0 20px 0 56px;
+    font-size: 17px;
+    font-family: inherit;
+    color: rgb(255, 255, 255 / 96%);
+    outline: none;
+    margin: 20px;
+}
+
+.textbox input:focus ~ .icon {
+    opacity: 2;
+}
+
+.textbox input::placeholder {
+    color: rgb(255, 255, 255 / 50%);
+}
+
+.textbox input:valid {
+    border-color: #26dfae;
+}
+
+.textbox .asterix {
+    position: absolute;
+    top: 21px;
+    right: 20px;
+    font-size: 22px;
+    pointer-events: none;
+    color: #df2666;
+}
+
+.textbox .icon {
+    position:  absolute;
+    top: 50%;
+    left: 20px;
+    margin-top: -12px;
+    opacity: 0.5;
+}
+
+.textbox :is(input:valid) ~ .asterix { opacity: 0.2;}
+
+@keyframes shake {
+    0%, 100% { translate: 0; }
+    25% { translate: 8px 0; }
+    75% { translate: -8px 0; }
+}
+
+.textbox input:valid,
+.textbox input:valid ~ :is(.asterix, .icon) {
+    animation: none;
+}
+
+.textbox :is(input, .icon, .asterix) {
+    animation: shake 0.1550s 0s 3;
+}
